@@ -137,6 +137,28 @@ h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 1.2em; display: flex; alig
 .card:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--fg); }
 .card h3 { font-size: 1.5rem; margin: 0 0 .4em; }
 .card p { color: var(--muted); margin: 0 0 1.2em; }
+/* Experience and competitions: date on the left, role @ organisation, one line of detail */
+.xp { list-style: none; margin: 0; padding: 0; }
+.xp li {
+  display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; padding: 22px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+.xp li:first-child { border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); }
+.xp__date { color: var(--muted); font-size: .95rem; padding-top: .5em; font-variant-numeric: tabular-nums; }
+.xp__head { margin: 0; line-height: 1.3; }
+.xp__role { font-size: 1.65rem; color: var(--fg); }
+.xp__at { color: var(--muted); margin: 0 .15em; }
+.xp__org { font-weight: 500; font-size: 1.05rem; }
+.xp__tag {
+  display: inline-block; margin-left: .5em; padding: 1px 9px; border: 1px solid var(--muted); border-radius: 999px;
+  font-size: .72rem; color: var(--muted); vertical-align: 3px;
+}
+.xp__desc { margin: .35em 0 0; color: var(--muted); font-size: .98rem; line-height: 1.55; max-width: 70ch; }
+@media (max-width: 720px) {
+  .xp li { grid-template-columns: 1fr; gap: 4px; }
+  .xp__date { padding-top: 0; }
+}
+
 /* A quiet note on each project's impact */
 .card__impact {
   margin: 0 0 1.2em; padding-top: .8em; font-size: .9rem; color: var(--muted);
