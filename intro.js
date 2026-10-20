@@ -35,13 +35,13 @@
   }
 
   function reveal(p) {
-    var r = easeInOut(clamp((p - 0.12) / 0.45));
+    var r = easeInOut(clamp((p - 0.04) / 0.4));
     hint.style.opacity = 1 - clamp(p / 0.08);
     name.style.opacity = r;
     name.style.filter = r < 1 ? 'blur(' + (1 - r) * 16 + 'px)' : 'none';
     name.style.transform = 'scale(' + (0.95 + 0.05 * r) + ')';
 
-    var o = ease(clamp((p - 0.72) / 0.16));
+    var o = ease(clamp((p - 0.38) / 0.25));
     outro.style.opacity = o;
     outro.style.transform = 'translateY(' + (1 - o) * 24 + 'px)';
     outro.style.visibility = o > 0 ? 'visible' : 'hidden';

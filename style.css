@@ -34,7 +34,12 @@ a { color: inherit; }
 ::selection { background: var(--accent); color: var(--bg); }
 
 /* Wavy line field behind the name in the opening */
-.waves { position: absolute; inset: 0; width: 100%; height: 100%; }
+.waves {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  /* Fade out toward the bottom so the opening flows into the page */
+  mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+}
 .waves path { fill: none; stroke: var(--wave); stroke-width: 1; }
 
 /* Nav */
@@ -55,7 +60,7 @@ a { color: inherit; }
 .nav nav a:hover { color: var(--fg); }
 
 /* Intro: the tall section gives scroll room; the stage stays pinned while the name builds */
-.intro { position: relative; height: 320vh; }
+.intro { position: relative; height: 170vh; }
 .intro.still { height: 100vh; }
 .intro__stage {
   position: sticky; top: 0; height: 100vh; overflow: hidden;
@@ -232,3 +237,4 @@ html.has-cursor, html.has-cursor * { cursor: none; }
 @keyframes splashPulse { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
 @keyframes splashOut { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .splash span { animation: none; } }
+#about { padding-top: clamp(24px, 4vw, 48px); }
