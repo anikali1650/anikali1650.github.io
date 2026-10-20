@@ -138,6 +138,9 @@ h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 1.2em; display: flex; alig
 }
 .statement__body { margin: 0; font-size: clamp(1.1rem, 1.9vw, 1.4rem); line-height: 1.45; text-align: justify; hyphens: auto; }
 .statement__note { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.02; text-align: right; }
+.statement__programs { margin: 1.1em 0 0; font-size: 1rem; line-height: 1.6; color: var(--muted); max-width: 60ch; }
+.statement__programs a { color: var(--fg); text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--fg) 35%, transparent); }
+.statement__programs a:hover { color: var(--accent); }
 .statement__tags { margin-top: clamp(40px, 6vw, 64px); }
 .tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .tags li { padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: .95rem; border: 2px solid var(--fg); }
@@ -210,6 +213,16 @@ html.has-cursor, html.has-cursor * { cursor: none; }
 :root[data-theme="night"] .theme-toggle .icon-sun { display: block; }
 :root[data-theme="night"] .theme-toggle .icon-moon { display: none; }
 .nav nav { align-items: center; }
+.nav__sep { opacity: .35; font-weight: 300; }
+.logo { white-space: nowrap; }
+@media (max-width: 720px) {
+  /* Name on its own line; links and the toggle in a row beneath */
+  .nav { padding-left: 16px; padding-right: 16px; flex-wrap: wrap; row-gap: 6px; }
+  .logo { font-size: 1.2rem; }
+  .nav nav { width: 100%; justify-content: space-between; gap: 6px; font-size: .85rem; }
+  .nav__sep { display: none; }
+  .theme-toggle { width: 28px; height: 28px; margin-left: 2px; }
+}
 
 @media (max-width: 720px) {
   .statement__grid { grid-template-columns: 1fr; }
