@@ -1,5 +1,5 @@
 :root {
-  --bg: #f6f3ed;
+  --bg: #fafafa;
   --fg: #0a0a0a;
   --muted: #5c5c5c;
   --card: #ffffff;
@@ -7,14 +7,14 @@
   --accent: #0a0a0a;
 }
 
-/* Night: warm black, with the name, headings and links in burnt orange */
+/* Night: black with white text */
 :root[data-theme="night"] {
-  --bg: #0c0a08;
-  --fg: #efe7dc;
-  --muted: #a39a8f;
-  --card: #15120f;
-  --line: #e8742a;
-  --accent: #e8742a;
+  --bg: #0a0a0a;
+  --fg: #f5f5f5;
+  --muted: #a3a3a3;
+  --card: #141414;
+  --line: #f5f5f5;
+  --accent: #f5f5f5;
 }
 .name, h1, h2, h3, .serif, .closing__email { color: var(--accent); }
 
@@ -31,8 +31,8 @@ h1, h2, h3, .logo { font-family: "Space Grotesk", sans-serif; }
 a { color: inherit; }
 ::selection { background: var(--accent); color: var(--bg); }
 
-/* Landscape: fixed behind everything */
-.scape { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+/* Water caustics: fixed behind everything, softened slightly */
+.scape { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; filter: blur(1px); }
 
 /* Nav */
 .nav {
@@ -93,9 +93,9 @@ a { color: inherit; }
 /* A faint warm glow behind the name, like a streetlamp at night */
 .intro__stage::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 55% 45% at 50% 47%, rgba(232, 116, 42, .13), transparent 70%);
+  background: radial-gradient(ellipse 55% 45% at 50% 47%, rgba(255, 255, 255, .05), transparent 70%);
 }
-:root[data-theme="day"] .intro__stage::before { background: radial-gradient(ellipse 55% 45% at 50% 47%, rgba(232, 150, 70, .12), transparent 70%); }
+:root[data-theme="day"] .intro__stage::before { background: none; }
 .intro__hint { z-index: 3; }
 .intro.ready:not(.still) .intro__outro { opacity: 0; visibility: hidden; }
 
