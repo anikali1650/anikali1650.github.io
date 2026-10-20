@@ -1,7 +1,7 @@
 // Water caustics behind the page: the shifting web of light on the floor of a pool.
-// A small WebGL shader layers two sets of slowly moving cells, bends them with a gentle
-// wobble, and lights up the thin borders between cells. White light on black at night,
-// a faint grey web on white by day. Strongest in the opening, a faint wash behind content.
+// A small WebGL shader views a pool floor at an angle, layers two sets of slowly moving cells,
+// bends them with a gentle wobble, and lights up the borders between cells, with shading in
+// each cell for depth. Light on a dark floor at night, a pale sunlit floor by day.
 (function () {
   var cv = document.querySelector('.scape');
   if (!cv) return;
@@ -41,19 +41,34 @@
     '}',
 
     'void main() {',
-    '  vec2 uv = gl_FragCoord.xy / uRes.y;',
-    '  uv.y += uScroll;',
-    '  float t = uTime * 0.35;',
-    // A slow wobble, like light bent by a moving surface
-    '  vec2 w = uv * 3.0;',
-    '  w += 0.45 * vec2(sin(w.y * 1.3 + t), cos(w.x * 1.1 - t * 0.8));',
-    '  w += 0.2 * vec2(sin(w.y * 2.9 - t * 1.2), cos(w.x * 3.3 + t));',
-    // Thin bright lines plus a soft glow around them
-    '  float e1 = border(w, t), e2 = border(w * 1.6 + 3.1, t * 1.25);',
-    '  float a = (1.0 - smoothstep(0.0, 0.05, e1)) + 0.35 * (1.0 - smoothstep(0.0, 0.22, e1));',
-    '  float b = (1.0 - smoothstep(0.0, 0.04, e2)) + 0.3 * (1.0 - smoothstep(0.0, 0.18, e2));',
-    '  float c = clamp(a * 0.7 + b * 0.4, 0.0, 1.0);',
-    '  gl_FragColor = uNight > 0.5 ? vec4(1.0, 1.0, 1.0, c * 0.3) : vec4(0.2, 0.2, 0.2, c * 0.16);',
+    '  vec2 s = gl_FragCoord.xy / uRes;',
+    '  float aspect = uRes.x / uRes.y;',
+    // Look down at a pool floor at an angle: the top of the screen is farther away
+    '  float z = 1.0 / (1.45 - s.y);',
+    '  vec2 world = vec2((s.x - 0.5) * aspect * z, z) * 2.4;',
+    '  world.y += uScroll;',
+    '  float t = uTime * 0.4;',
+    // Light bent by a moving surface
+    '  vec2 w = world;',
+    '  w += 0.35 * vec2(sin(w.y * 1.3 + t), cos(w.x * 1.1 - t * 0.8));',
+    '  w += 0.15 * vec2(sin(w.y * 2.9 - t * 1.2), cos(w.x * 3.3 + t));',
+    '  float ea = border(w, t), eb = border(w * 1.55 + 3.1, t * 1.2);',
+    // Sharp bright filaments with a soft glow; brightest where the two layers cross
+    '  float la = exp(-ea * 16.0) + 0.3 * exp(-ea * 4.0);',
+    '  float lb = exp(-eb * 14.0) + 0.25 * exp(-eb * 3.5);',
+    '  float light = la * 0.55 + lb * 0.35 + la * lb * 0.9;',
+    // Rounded cells: rims catch light, centres sit darker
+    '  float body = 0.14 * (1.0 - smoothstep(0.0, 0.55, ea));',
+    // Broad, slowly drifting areas of brighter and dimmer water
+    '  float patchy = 0.75 + 0.25 * sin(world.x * 0.7 + t * 0.3) * sin(world.y * 0.6 - t * 0.2);',
+    // Haze with distance, and a calmer band behind the name
+    '  float fade = mix(1.0, 0.3, smoothstep(0.0, 1.0, s.y));',
+    '  float L = (light + body) * patchy * fade;',
+    '  L *= 1.0 - 0.35 * exp(-pow((s.y - 0.53) * 3.0, 2.0));',
+    '  vec3 col = uNight > 0.5',
+    '    ? vec3(0.035) + vec3(clamp(L, 0.0, 1.4)) * 0.55',
+    '    : vec3(0.87) + vec3(clamp(L, 0.0, 1.0)) * 0.13 - vec3(0.05) * s.y;',
+    '  gl_FragColor = vec4(col, 1.0);',
     '}'
   ].join('\n');
 
@@ -87,7 +102,7 @@
   function resize() {
     W = innerWidth; H = innerHeight;
     // Soft light hides lower resolution, which keeps this light on the GPU
-    var res = Math.min(devicePixelRatio || 1, 2) * 0.5;
+    var res = Math.min(devicePixelRatio || 1, 2) * 0.6;
     cv.width = Math.round(W * res); cv.height = Math.round(H * res);
     gl.viewport(0, 0, cv.width, cv.height);
   }
