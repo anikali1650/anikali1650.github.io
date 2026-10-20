@@ -73,6 +73,32 @@
   </main>
 
   <footer>© <span id="year">2026</span> Anika Li</footer>
+  <div class="cursor" aria-hidden="true"></div>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    // Circle cursor that inverts whatever is under it (mouse/trackpad only)
+    (function () {
+      if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      var dot = document.querySelector('.cursor');
+      var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var x = 0, y = 0, cx = 0, cy = 0;
+      document.documentElement.classList.add('has-cursor');
+
+      addEventListener('mousemove', function (e) {
+        x = e.clientX; y = e.clientY;
+        if (!dot.classList.contains('on')) { cx = x; cy = y; }
+        dot.classList.add('on');
+        dot.classList.toggle('big', !!e.target.closest('a, button'));
+      });
+      document.addEventListener('mouseleave', function () { dot.classList.remove('on'); });
+
+      (function tick() {
+        cx += (x - cx) * (still ? 1 : 0.2);
+        cy += (y - cy) * (still ? 1 : 0.2);
+        dot.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+        requestAnimationFrame(tick);
+      })();
+    })();
+  </script>
 </body>
 </html>

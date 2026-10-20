@@ -101,6 +101,18 @@ h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 1.2em; display: flex; alig
 .contact > p { color: var(--muted); font-size: 1.15rem; margin: -1em 0 2em; }
 .socials { margin-top: 28px; display: flex; justify-content: center; gap: 28px; font-weight: 600; }
 
+/* Custom cursor: a white circle with "difference" blending shows as the inverse of what's beneath */
+html.has-cursor, html.has-cursor * { cursor: none; }
+.cursor {
+  position: fixed; top: 0; left: 0; z-index: 100;
+  width: 28px; height: 28px; margin: -14px 0 0 -14px;
+  border-radius: 50%; background: #fff; mix-blend-mode: difference;
+  pointer-events: none; opacity: 0;
+  transition: width .2s, height .2s, margin .2s, opacity .2s;
+}
+.cursor.on { opacity: 1; }
+.cursor.big { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
+
 footer { text-align: center; padding: 32px 16px 48px; color: var(--muted); font-size: .9rem; }
 
 @media (max-width: 720px) {
