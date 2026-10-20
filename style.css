@@ -70,6 +70,7 @@ a { color: inherit; }
 /* The opening line: one modest sentence, left-aligned, the same style as the other headings */
 .intro__content {
   position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 64px);
+  align-self: flex-end; padding-bottom: 11vh;   /* sit low on the screen so the page follows closely */
 }
 .name {
   font: 600 clamp(2rem, 4.8vw, 3.8rem)/1.08 Inter, system-ui, sans-serif; letter-spacing: -.035em;
