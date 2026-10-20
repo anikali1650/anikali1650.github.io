@@ -7,10 +7,10 @@
   <meta name="description" content="Personal site of Anika Li — projects, about, and contact.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Only the three characters of the Chinese name are loaded from this font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&text=%E6%9D%8E%E5%BE%B7%E5%AE%89&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=17">
   <script>
     // Pick day or night before the page paints: a saved choice wins, otherwise night
     (function () {
@@ -24,13 +24,13 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>A</text></svg>">
 </head>
 <body>
-  <!-- Dappled tree shadows behind the whole page (drawn by shade.js) -->
-  <div class="shade" aria-hidden="true"><canvas class="shade__far"></canvas><canvas class="shade__near"></canvas></div>
+  <!-- Mountains reflected in a still lake, behind the whole page (drawn by scape.js) -->
+  <canvas class="scape" aria-hidden="true"></canvas>
   <!-- Splash: the name pulses on a blank page for a moment, then fades away -->
   <div class="splash" aria-hidden="true"><span lang="zh-Hans">李德安</span></div>
 
   <header class="nav">
-    <a class="logo" href="#top">Anika Li</a>
+    <a class="logo" href="#top">Anika<br>Li</a>
     <nav>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -52,7 +52,7 @@
       <div class="intro__stage">
         <div class="intro__content">
           <h1 class="name" aria-label="Anika Li">
-            <span class="ch" aria-hidden="true"><span>A</span></span><span class="ch" aria-hidden="true"><span>N</span></span><span class="ch" aria-hidden="true"><span>I</span></span><span class="ch" aria-hidden="true"><span>K</span></span><span class="ch" aria-hidden="true"><span>A</span></span><span class="ch gap" aria-hidden="true"></span><span class="ch" aria-hidden="true"><span>L</span></span><span class="ch" aria-hidden="true"><span>I</span></span>
+            <span class="ch" aria-hidden="true"><span>A</span></span><span class="ch" aria-hidden="true"><span>n</span></span><span class="ch" aria-hidden="true"><span>i</span></span><span class="ch" aria-hidden="true"><span>k</span></span><span class="ch" aria-hidden="true"><span>a</span></span><span class="ch gap" aria-hidden="true"></span><span class="ch" aria-hidden="true"><span>L</span></span><span class="ch" aria-hidden="true"><span>i</span></span>
           </h1>
 
           <div class="intro__outro">
@@ -156,8 +156,8 @@
       btn.addEventListener('click', function () { set(root.dataset.theme === 'night' ? 'day' : 'night', true); });
     })();
   </script>
-  <script src="shade.js?v=14"></script>
-  <script src="intro.js?v=14"></script>
+  <script src="scape.js?v=17"></script>
+  <script src="intro.js?v=17"></script>
   <script>
     // Circle cursor that inverts whatever is under it (mouse/trackpad only)
     (function () {

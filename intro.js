@@ -1,5 +1,5 @@
 // Opening sequence: a short splash with the name in Chinese, then the name comes into focus
-// from a soft blur as you scroll. The tree shadows behind the page live in shade.js.
+// from a soft blur as you scroll. The landscape behind the page lives in scape.js.
 (function () {
   var intro = document.querySelector('.intro');
   if (!intro) return;
