@@ -1,5 +1,5 @@
 // Opening sequence: a short splash with the name in Chinese, then the name comes into focus
-// from a soft blur as you scroll. The water behind the page lives in scape.js.
+// from a soft blur as you scroll. The wavy lines behind it live in lines.js.
 (function () {
   var intro = document.querySelector('.intro');
   if (!intro) return;

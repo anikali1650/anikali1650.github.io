@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Only the three characters of the Chinese name are loaded from this font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&text=%E6%9D%8E%E5%BE%B7%E5%AE%89&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=24">
+  <link rel="stylesheet" href="style.css?v=26">
   <script>
     // Pick day or night before the page paints: a saved choice wins, otherwise night
     (function () {
@@ -24,8 +24,6 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>A</text></svg>">
 </head>
 <body>
-  <!-- Water caustics behind the whole page (drawn by scape.js) -->
-  <canvas class="scape" aria-hidden="true"></canvas>
   <!-- Splash: the name pulses on a blank page for a moment, then fades away -->
   <div class="splash" aria-hidden="true"><span lang="zh-Hans">李德安</span></div>
 
@@ -47,32 +45,27 @@
   </header>
 
   <main id="top">
-    <!-- Opening: tall section with a pinned stage; the name comes into focus as you scroll -->
+    <!-- Opening: tall section with a pinned stage; the intro sentence comes into focus as you scroll -->
     <section class="intro">
       <div class="intro__stage">
+        <svg class="waves" aria-hidden="true"></svg>
         <div class="intro__content">
-          <h1 class="name" aria-label="Anika Li">
-            <span class="ch" aria-hidden="true"><span>A</span></span><span class="ch" aria-hidden="true"><span>n</span></span><span class="ch" aria-hidden="true"><span>i</span></span><span class="ch" aria-hidden="true"><span>k</span></span><span class="ch" aria-hidden="true"><span>a</span></span><span class="ch gap" aria-hidden="true"></span><span class="ch" aria-hidden="true"><span>L</span></span><span class="ch" aria-hidden="true"><span>i</span></span>
-          </h1>
-
+          <h1 class="name">Hi, I'm Anika Li, a student <span class="serif at">@UT Austin</span></h1>
           <div class="intro__outro">
-            <p class="intro__at"><span>@</span>UT Austin</p>
+            <p class="statement__programs">
+              Double major in <a href="https://www.mccombs.utexas.edu/undergraduate/cbhp/" target="_blank" rel="noopener">Canfield Business Honors</a>
+              and <a href="https://math.utexas.edu/" target="_blank" rel="noopener">Mathematics</a>
+              <span aria-hidden="true">·</span> Certificate in <a href="https://oden.utexas.edu/academics/undergraduates/computational-science-and-engineering-certificate/" target="_blank" rel="noopener">Computational Science and Engineering</a>
+            </p>
           </div>
         </div>
-
 
         <p class="intro__hint" aria-hidden="true">Scroll <span>↓</span></p>
       </div>
     </section>
 
-    <!-- About: one big editorial statement with serif accents, then a justified paragraph -->
+    <!-- About: a justified paragraph and a serif highlight -->
     <section id="about" class="section statement">
-      <h2 class="statement__title">Hi, I'm Anika Li, a student <span class="serif at">@UT Austin</span></h2>
-      <p class="statement__programs">
-        Double major in <a href="https://www.mccombs.utexas.edu/undergraduate/cbhp/" target="_blank" rel="noopener">Canfield Business Honors</a>
-        and <a href="https://math.utexas.edu/" target="_blank" rel="noopener">Mathematics</a>
-        <span aria-hidden="true">·</span> Certificate in <a href="https://oden.utexas.edu/academics/undergraduates/computational-science-and-engineering-certificate/" target="_blank" rel="noopener">Computational Science and Engineering</a>
-      </p>
       <div class="statement__grid">
         <p class="statement__body">write a few lines about what you're into here: what you study, what you're building, and what you do for fun. i'm also interested in effective altruism. you'll see me document my work and thoughts here.</p>
         <p class="statement__note serif">add a highlight here,<br>like an award or a role</p>
@@ -156,8 +149,8 @@
       btn.addEventListener('click', function () { set(root.dataset.theme === 'night' ? 'day' : 'night', true); });
     })();
   </script>
-  <script src="scape.js?v=23"></script>
-  <script src="intro.js?v=17"></script>
+  <script src="lines.js?v=26"></script>
+  <script src="intro.js?v=26"></script>
   <script>
     // Circle cursor that inverts whatever is under it (mouse/trackpad only)
     (function () {
