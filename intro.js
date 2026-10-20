@@ -1,4 +1,4 @@
-// Opening sequence: a flowing sheet of liquid metal with a faint pearly sheen that
+// Opening sequence: a short splash with the name, then a flowing sheet of liquid metal with a faint pearly sheen that
 // reflects the name, and the name spelling itself out as you scroll through the
 // pinned intro. Falls back to a field of wavy SVG lines where WebGL isn't available.
 (function () {
@@ -9,17 +9,21 @@
   var darkQuery = matchMedia('(prefers-color-scheme: dark)');
   var name = intro.querySelector('.name');
   var letters = [].slice.call(intro.querySelectorAll('.ch > span'));
-  var tracks = intro.querySelectorAll('.bits__track');
-  var bits = intro.querySelectorAll('.bits');
   var outro = intro.querySelector('.intro__outro');
   var hint = intro.querySelector('.intro__hint');
 
-  // Binary bands spell out the name in ASCII
-  var code = 'ANIKA LI'.split('').map(function (c) {
-    return c === ' ' ? '' : ('0000000' + c.charCodeAt(0).toString(2)).slice(-8);
-  }).join('  ');
-  var long = Array(8).join(code + '    ');
-  tracks.forEach(function (t) { t.textContent = long; });
+  // Splash: hold the pulsing name for at least a moment, until fonts are ready, then fade it out
+  var splash = document.querySelector('.splash');
+  if (splash) {
+    var shown = performance.now();
+    var hideSplash = function () {
+      setTimeout(function () {
+        splash.classList.add('gone');
+        setTimeout(function () { splash.remove(); }, 600);
+      }, Math.max(0, (still ? 300 : 1100) - (performance.now() - shown)));
+    };
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(hideSplash);
+  }
 
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
   function ease(v) { return 1 - Math.pow(1 - v, 3); }
@@ -36,9 +40,6 @@
 
   function reveal(p) {
     hint.style.opacity = 1 - clamp(p / 0.08);
-    bits.forEach(function (b) { b.style.transform = 'scaleX(' + ease(clamp((p - 0.02) / 0.25)) + ')'; });
-    tracks[0].style.transform = 'translateX(' + (-p * 30) + '%)';
-    tracks[1].style.transform = 'translateX(' + (p * 30 - 30) + '%)';
 
     letters.forEach(function (el, i) {
       var e = ease(clamp((p - 0.08 - i * 0.06) / 0.22));
@@ -141,7 +142,7 @@
       '  float below = texture2D(uText, vec2(uv.x, 2.0 * uName.x - uv.y) + w).a * exp(-(uName.x - uv.y) * 8.0) * step(uv.y, uName.x);',
       '  float above = texture2D(uText, vec2(uv.x, 2.0 * uName.y - uv.y) + w).a * exp(-(uv.y - uName.y) * 8.0) * step(uName.y, uv.y);',
       '  float ghost = texture2D(uText, uv + w * 1.6).a;',
-      '  float refl = max(below, above) * 0.6 + ghost * 0.12;',
+      '  float refl = max(below, above) * 0.32 + ghost * 0.06;',
 
       '  vec3 col;',
       '  if (uDark > 0.5) {',
