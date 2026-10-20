@@ -10,13 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- Only the three characters of the Chinese name are loaded from this font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&text=%E6%9D%8E%E5%BE%B7%E5%AE%89&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
   <script>
-    // Pick day or night before the page paints: a saved choice wins, otherwise follow the system
+    // Pick day or night before the page paints: a saved choice wins, otherwise night
     (function () {
       var t;
       try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (t !== 'day' && t !== 'night') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
+      if (t !== 'day' && t !== 'night') t = 'night';
       document.documentElement.dataset.theme = t;
       document.documentElement.classList.add('js');
     })();
@@ -24,8 +24,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>A</text></svg>">
 </head>
 <body>
-  <!-- Dappled tree shadows behind the whole page (drawn by shade.js) -->
-  <div class="shade" aria-hidden="true"><canvas class="shade__far"></canvas><canvas class="shade__near"></canvas></div>
+  <!-- Fallen autumn leaves behind the whole page (drawn by leaves.js) -->
+  <div class="leaves" aria-hidden="true"><canvas class="leaves__far"></canvas><canvas class="leaves__mid"></canvas></div>
   <!-- Splash: the name pulses on a blank page for a moment, then fades away -->
   <div class="splash" aria-hidden="true"><span lang="zh-Hans">李德安</span></div>
 
@@ -43,7 +43,7 @@
   </header>
 
   <main id="top">
-    <!-- Opening: tall section with a pinned stage; scrolling parts the branches in front of the name -->
+    <!-- Opening: tall section with a pinned stage; scrolling scatters the leaves in front of the name -->
     <section class="intro">
       <div class="intro__stage">
         <div class="intro__content">
@@ -56,11 +56,8 @@
           </div>
         </div>
 
-        <!-- Leafy branches in front of the name; they swing open as you scroll (intro.js) -->
-        <div class="branches" aria-hidden="true">
-          <canvas class="branches__side branches__left"></canvas>
-          <canvas class="branches__side branches__right"></canvas>
-        </div>
+        <!-- A drift of leaves in front of the name; they scatter as you scroll (leaves.js) -->
+        <canvas class="leaves__front" aria-hidden="true"></canvas>
 
         <p class="intro__hint" aria-hidden="true">Scroll <span>↓</span></p>
       </div>
@@ -68,13 +65,14 @@
 
     <!-- About: one big editorial statement with serif accents, then a justified paragraph -->
     <section id="about" class="section statement">
-      <h2 class="statement__title">Hi, I'm Anika Li, a student <span class="serif at">@UT Austin</span></h2>
+      <h2 class="statement__title">Hi, I'm Anika Li, a student <span class="serif at">@UT Austin</span> who cares about <span class="serif">effective altruism</span>.</h2>
       <div class="statement__grid">
         <p class="statement__body">write a few lines about what you're into here: what you study, what you're building, and what you do for fun. you'll see me document my work and thoughts here.</p>
         <p class="statement__note serif">add a highlight here,<br>like an award or a role</p>
       </div>
       <div class="statement__tags">
         <ul class="tags">
+          <li>Effective altruism</li>
           <li>Skill one</li>
           <li>Skill two</li>
           <li>Skill three</li>
@@ -149,16 +147,10 @@
       }
       label();
       btn.addEventListener('click', function () { set(root.dataset.theme === 'night' ? 'day' : 'night', true); });
-      // Without a saved choice, keep following the system setting
-      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-        var saved; try { saved = localStorage.getItem('theme'); } catch (err) {}
-        if (!saved) set(e.matches ? 'night' : 'day', false);
-      });
     })();
   </script>
-  <script src="canopy.js?v=10"></script>
-  <script src="shade.js?v=10"></script>
-  <script src="intro.js?v=10"></script>
+  <script src="leaves.js?v=11"></script>
+  <script src="intro.js?v=11"></script>
   <script>
     // Circle cursor that inverts whatever is under it (mouse/trackpad only)
     (function () {
