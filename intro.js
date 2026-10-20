@@ -1,14 +1,17 @@
 // Opening sequence: a short splash with the name, then a field of wavy lines that drift
-// and bend away from the mouse while the name spells itself out as you scroll.
+// and bend away from the mouse while the name spells itself out as you scroll. Then a
+// photo panel rises behind the name and the letters turn white where they overlap it.
 (function () {
   var intro = document.querySelector('.intro');
   if (!intro) return;
 
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var darkQuery = matchMedia('(prefers-color-scheme: dark)');
-  var name = intro.querySelector('.name');
+  // Two copies of the name: the dark one on the page, and a white one inside the photo panel
   var letters = [].slice.call(intro.querySelectorAll('.ch > span'));
-  var outro = intro.querySelector('.intro__outro');
+  var perCopy = letters.length / 2;
+  var stage = intro.querySelector('.intro__stage');
+  var panel = intro.querySelector('.intro__panel');
+  var photo = intro.querySelector('.intro__photo');
   var hint = intro.querySelector('.intro__hint');
 
   // Splash: hold the pulsing name for at least a moment, until fonts are ready, then fade it out
@@ -39,20 +42,25 @@
     hint.style.opacity = 1 - clamp(p / 0.08);
 
     letters.forEach(function (el, i) {
-      var e = ease(clamp((p - 0.08 - i * 0.06) / 0.22));
+      var e = ease(clamp((p - 0.06 - (i % perCopy) * 0.05) / 0.18));
       el.style.transform = 'translateY(' + (1 - e) * 115 + '%) rotate(' + (1 - e) * 10 + 'deg)';
     });
 
-    var o = ease(clamp((p - 0.72) / 0.16));
-    outro.style.opacity = o;
-    outro.style.transform = 'translateY(' + (1 - o) * 24 + 'px)';
-    outro.style.visibility = o > 0 ? 'visible' : 'hidden';
+    // The photo panel rises from the bottom; its rounded inset shrinks until it fills the screen
+    var r = clamp((p - 0.56) / 0.44);
+    var top = (1 - r) * stage.clientHeight, side = (1 - r) * 16, round = (1 - r) * 24;
+    panel.style.clipPath = 'inset(' + top + 'px ' + side + 'px 0 ' + side + 'px round ' + round + 'px ' + round + 'px 0 0)';
+    photo.style.transform = 'translateY(' + top + 'px)';
+
+    // Keep the nav dark-on-white while the white part of the opening is behind it
+    var light = top > 60 && intro.getBoundingClientRect().bottom > 60;
+    document.documentElement.classList.toggle('nav-light', light);
   }
 
-  // ---- Mouse (shared by both backdrops) ----
-  var mouse = { x: -9999, y: -9999, sx: -9999, sy: -9999, amt: 0, on: false };
+  // ---- Mouse ----
+  var mouse = { x: -9999, y: -9999, sx: -9999, sy: -9999, on: false };
   addEventListener('mousemove', function (e) {
-    var r = intro.querySelector('.intro__stage').getBoundingClientRect();
+    var r = stage.getBoundingClientRect();
     mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.on = true;
     if (mouse.sx < -999) { mouse.sx = mouse.x; mouse.sy = mouse.y; }
   });
@@ -71,7 +79,7 @@
   var resizeTimer;
   addEventListener('resize', function () {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () { backdrop.resize(); if (still) backdrop.draw(0); }, 150);
+    resizeTimer = setTimeout(function () { backdrop.resize(); reveal(progress()); if (still) backdrop.draw(0); }, 150);
   });
 
   if (still) { backdrop.draw(0); return; }
@@ -80,7 +88,6 @@
     if (visible) {
       mouse.sx += (mouse.x - mouse.sx) * 0.12;
       mouse.sy += (mouse.y - mouse.sy) * 0.12;
-      mouse.amt += ((mouse.on ? 1 : 0) - mouse.amt) * 0.05;
       backdrop.draw(t);
     }
     requestAnimationFrame(loop);

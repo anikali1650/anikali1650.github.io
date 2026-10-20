@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>A</text></svg>">
 </head>
@@ -26,7 +26,9 @@
   </header>
 
   <main id="top">
-    <!-- Opening: tall section with a pinned stage; scrolling through it spells out the name -->
+    <!-- Opening: tall section with a pinned stage. Scrolling spells out the name, then a photo
+         panel rises behind it; a white copy of the name, clipped to the panel, makes the
+         letters turn white wherever they overlap the photo. -->
     <section class="intro">
       <div class="intro__stage">
         <svg class="waves" aria-hidden="true"></svg>
@@ -35,13 +37,18 @@
           <h1 class="name" aria-label="Anika Li">
             <span class="ch" aria-hidden="true"><span>A</span></span><span class="ch" aria-hidden="true"><span>N</span></span><span class="ch" aria-hidden="true"><span>I</span></span><span class="ch" aria-hidden="true"><span>K</span></span><span class="ch" aria-hidden="true"><span>A</span></span><span class="ch gap" aria-hidden="true"></span><span class="ch" aria-hidden="true"><span>L</span></span><span class="ch" aria-hidden="true"><span>I</span></span>
           </h1>
-
-          <div class="intro__outro">
-            <p class="intro__at"><span>@</span>UT Austin</p>
-          </div>
         </div>
 
         <p class="intro__hint" aria-hidden="true">Scroll <span>↓</span></p>
+
+        <div class="intro__panel" aria-hidden="true">
+          <img class="intro__photo" src="images/build.jpg" alt="" width="2400" height="1600">
+          <div class="intro__content">
+            <div class="name">
+              <span class="ch" aria-hidden="true"><span>A</span></span><span class="ch" aria-hidden="true"><span>N</span></span><span class="ch" aria-hidden="true"><span>I</span></span><span class="ch" aria-hidden="true"><span>K</span></span><span class="ch" aria-hidden="true"><span>A</span></span><span class="ch gap" aria-hidden="true"></span><span class="ch" aria-hidden="true"><span>L</span></span><span class="ch" aria-hidden="true"><span>I</span></span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -49,8 +56,14 @@
     <section id="about" class="section statement">
       <h2 class="statement__title">Hi, I'm Anika Li, a student <span class="serif at">@UT Austin</span></h2>
       <div class="statement__grid">
-        <p class="statement__body">write a few lines about what you're into here: what you study, what you're building, and what you do for fun. you'll see me document my work and thoughts here.</p>
-        <p class="statement__note serif">add a highlight here,<br>like an award or a role</p>
+        <div>
+          <p class="statement__body">write a few lines about what you're into here: what you study, what you're building, and what you do for fun. you'll see me document my work and thoughts here.</p>
+          <p class="statement__note serif">add a highlight here,<br>like an award or a role</p>
+        </div>
+        <figure class="statement__photo">
+          <img src="images/team.jpg" alt="Anika with her team" width="1600" height="1067" loading="lazy">
+          <figcaption class="serif">me and my team</figcaption>
+        </figure>
       </div>
       <div class="statement__tags">
         <ul class="tags">
@@ -67,10 +80,13 @@
     <section id="projects" class="section">
       <h2><span class="num">01</span> Projects</h2>
       <div class="cards">
-        <article class="card c1">
+        <article class="card card--feature">
+          <img class="card__img" src="images/silicon-hills.jpg" alt="Silicon Hills Project poster reading Come Build" width="900" height="1503" loading="lazy">
+          <div class="card__body">
           <h3>Silicon Hills Project</h3>
           <p>Add a sentence or two on what the Silicon Hills Project is and your role in it.</p>
           <a href="#">Learn more →</a>
+          </div>
         </article>
       </div>
     </section>
@@ -88,7 +104,7 @@
   <footer>© <span id="year">2026</span> Anika Li</footer>
   <div class="cursor" aria-hidden="true"></div>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="intro.js?v=5"></script>
+  <script src="intro.js?v=6"></script>
   <script>
     // Circle cursor that inverts whatever is under it (mouse/trackpad only)
     (function () {
