@@ -7,8 +7,9 @@
   <meta name="description" content="Personal site of Anika Li — projects, about, and contact.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>A</text></svg>">
 </head>
 <body>
@@ -22,15 +23,29 @@
   </header>
 
   <main id="top">
-    <section class="hero">
-      <p class="eyebrow">Hi there, I'm</p>
-      <h1>Anika <span class="grad">Li</span></h1>
-      <p class="tagline">A short line about what you do — e.g. student, developer, designer, maker of things.</p>
-      <div class="cta">
-        <a class="btn primary" href="#projects">See my work</a>
-        <a class="btn ghost" href="#contact">Get in touch</a>
+    <!-- Opening: tall section with a pinned stage; scrolling through it spells out the name -->
+    <section class="intro">
+      <div class="intro__stage">
+        <svg class="waves" aria-hidden="true"></svg>
+
+        <div class="intro__content">
+          <div class="bits bits--top" aria-hidden="true"><span class="bits__track"></span></div>
+          <h1 class="name" aria-label="Anika Li">
+            <span class="ch" aria-hidden="true"><span>A</span></span><span class="ch" aria-hidden="true"><span>N</span></span><span class="ch" aria-hidden="true"><span>I</span></span><span class="ch" aria-hidden="true"><span>K</span></span><span class="ch" aria-hidden="true"><span>A</span></span><span class="ch gap" aria-hidden="true"></span><span class="ch accent" aria-hidden="true"><span>L</span></span><span class="ch accent" aria-hidden="true"><span>I</span></span>
+          </h1>
+          <div class="bits bits--bottom" aria-hidden="true"><span class="bits__track"></span></div>
+
+          <div class="intro__outro">
+            <p class="tagline">A short line about what you do — e.g. student, developer, designer, maker of things.</p>
+            <div class="cta">
+              <a class="btn primary" href="#projects">See my work</a>
+              <a class="btn ghost" href="#contact">Get in touch</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="intro__hint" aria-hidden="true">Scroll <span>↓</span></p>
       </div>
-      <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
     </section>
 
     <section id="about" class="section">
@@ -75,6 +90,7 @@
   <footer>© <span id="year">2026</span> Anika Li</footer>
   <div class="cursor" aria-hidden="true"></div>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="intro.js"></script>
   <script>
     // Circle cursor that inverts whatever is under it (mouse/trackpad only)
     (function () {
