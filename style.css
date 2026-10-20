@@ -151,6 +151,12 @@ h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 1.2em; display: flex; alig
 .card:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--fg); }
 .card h3 { font-size: 1.5rem; margin: 0 0 .4em; }
 .card p { color: var(--muted); margin: 0 0 1.2em; }
+/* A quiet note on each project's impact */
+.card__impact {
+  margin: 0 0 1.2em; padding-top: .8em; font-size: .9rem; color: var(--muted);
+  border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+.card__impact span { font: italic 500 1.05rem "Cormorant Garamond", Georgia, serif; color: var(--accent); margin-right: .35em; }
 .card a { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--accent); }
 
 /* Silicon Hills Project photos: one compact row, same height, poster narrower */
