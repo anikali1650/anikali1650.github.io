@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>A</text></svg>">
 </head>
@@ -29,7 +29,6 @@
     <!-- Opening: tall section with a pinned stage; scrolling through it spells out the name -->
     <section class="intro">
       <div class="intro__stage">
-        <canvas class="sheen" aria-hidden="true"></canvas>
         <svg class="waves" aria-hidden="true"></svg>
 
         <div class="intro__content">
@@ -89,7 +88,7 @@
   <footer>© <span id="year">2026</span> Anika Li</footer>
   <div class="cursor" aria-hidden="true"></div>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="intro.js?v=4"></script>
+  <script src="intro.js?v=5"></script>
   <script>
     // Circle cursor that inverts whatever is under it (mouse/trackpad only)
     (function () {
