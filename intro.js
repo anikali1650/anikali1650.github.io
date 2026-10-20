@@ -1,5 +1,5 @@
 // Opening sequence: a short splash with the name in Chinese, then the name comes into focus
-// from a soft blur as the drift of leaves in front of it scatters (the leaves live in leaves.js).
+// from a soft blur as you scroll. The tree shadows behind the page live in shade.js.
 (function () {
   var intro = document.querySelector('.intro');
   if (!intro) return;
@@ -26,7 +26,7 @@
   function ease(v) { return 1 - Math.pow(1 - v, 3); }
   function easeInOut(v) { return v < 0.5 ? 4 * v * v * v : 1 - Math.pow(-2 * v + 2, 3) / 2; }
 
-  // ---- Scroll: the name comes into focus as the leaves scatter ----
+  // ---- Scroll: the name comes into focus ----
 
   function progress() {
     if (still) return 1;
