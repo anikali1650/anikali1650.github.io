@@ -90,9 +90,9 @@ a { color: inherit; }
 .intro__hint span { display: inline-block; animation: nudge 1.6s ease-in-out infinite; }
 @keyframes nudge { 50% { transform: translateY(6px); } }
 
-/* Before JS takes over (or without it) the name is fully visible */
-.js .intro:not(.still) .ch > span { transform: translateY(115%); }
-.js .intro:not(.still) .intro__outro { opacity: 0; visibility: hidden; }
+/* The name stays visible unless the intro script has actually started (it adds .ready) */
+.intro.ready:not(.still) .ch > span { transform: translateY(115%); }
+.intro.ready:not(.still) .intro__outro { opacity: 0; visibility: hidden; }
 
 .btn {
   display: inline-block; padding: 14px 26px; border-radius: 999px;

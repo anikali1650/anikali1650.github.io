@@ -69,6 +69,7 @@
 
   if (still) intro.classList.add('still');
   reveal(progress());
+  intro.classList.add('ready');
   backdrop.resize();
 
   var resizeTimer;
