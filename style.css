@@ -1,6 +1,6 @@
 :root {
-  --bg: #fafafa;
-  --fg: #0a0a0a;
+  --bg: #f2f2f2;
+  --fg: #1a1a1a;
   --muted: #5c5c5c;
   --card: #ffffff;
   --line: #0a0a0a;
@@ -237,3 +237,4 @@ html.has-cursor, html.has-cursor * { cursor: none; }
 @keyframes splashPulse { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
 @keyframes splashOut { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .splash span { animation: none; } }
+:root[data-theme="day"] .intro__at { text-shadow: none; }

@@ -67,7 +67,7 @@
     '  L *= 1.0 - 0.35 * exp(-pow((s.y - 0.53) * 3.0, 2.0));',
     '  vec3 col = uNight > 0.5',
     '    ? vec3(0.035) + vec3(clamp(L, 0.0, 1.4)) * 0.55',
-    '    : vec3(0.87) + vec3(clamp(L, 0.0, 1.0)) * 0.13 - vec3(0.05) * s.y;',
+    '    : vec3(0.68) + vec3(clamp(L, 0.0, 1.0)) * 0.16 - vec3(0.04) * s.y;',
     '  gl_FragColor = vec4(col, 1.0);',
     '}'
   ].join('\n');
