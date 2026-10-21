@@ -224,7 +224,8 @@ html.has-cursor, html.has-cursor * { cursor: none; }
   text-decoration: none; overflow-wrap: anywhere;
 }
 .closing__email:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 8px; }
-.closing__tree { margin: 0; font: 400 clamp(.6rem, 1vw, .8rem)/1.25 "Space Mono", monospace; color: var(--muted); opacity: .8; }
+.closing__tree { margin: 0; font: 400 clamp(.6rem, 1vw, .8rem)/1.05 "Space Mono", monospace; color: var(--muted); opacity: .8; }
+@media (max-width: 520px) { .closing__tree { font-size: 2.2vw; } }
 .closing__meta { margin: clamp(40px, 6vw, 72px) 0 0; font-size: .9rem; color: var(--muted); }
 .closing__meta a { color: inherit; }
 
