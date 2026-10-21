@@ -104,8 +104,8 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 /* Sections */
-.section { scroll-margin-top: 40px; max-width: 1200px; margin: 0 auto; padding: clamp(64px, 10vw, 120px) clamp(16px, 5vw, 64px); }
-h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 1.2em; display: flex; align-items: baseline; gap: .5em; }
+.section { scroll-margin-top: 70px; max-width: 1200px; margin: 0 auto; padding: clamp(28px, 4vw, 44px) clamp(16px, 5vw, 64px); }
+h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 .7em; display: flex; align-items: baseline; gap: .5em; }
 .num { font-size: .45em; color: var(--muted); }
 
 /* About as an editorial statement */
@@ -173,6 +173,7 @@ h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 1.2em; display: flex; alig
 .card a { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--accent); }
 
 /* Silicon Hills Project photos: one compact row, same height, poster narrower */
+.card .gallery { margin-top: 1.4em; }
 .gallery { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.2fr) minmax(0, 1.2fr); gap: 16px; }
 .gallery__item { margin: 0; }
 .gallery__item img {
