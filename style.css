@@ -219,8 +219,9 @@ html.has-cursor, html.has-cursor * { cursor: none; }
   border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
 }
 .closing__row { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+@media (min-width: 900px) { .closing__row { flex-wrap: nowrap; } .closing__tree { flex-shrink: 0; } }
 .closing__email {
-  font: 500 clamp(1.7rem, 8vw, 6.2rem)/1 Inter, system-ui, sans-serif; letter-spacing: -.04em;
+  font: 500 clamp(1.6rem, 4.4vw, 3.8rem)/1 Inter, system-ui, sans-serif; letter-spacing: -.04em;
   text-decoration: none; overflow-wrap: anywhere;
 }
 .closing__email:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 8px; }
