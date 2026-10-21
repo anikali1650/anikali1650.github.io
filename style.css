@@ -66,6 +66,14 @@ a { color: inherit; }
   display: flex; align-items: center; justify-content: center;
 }
 
+/* The UT Tower in ASCII: faint, on the right of the hero; intro.js fades it as you scroll */
+.hero__art {
+  position: absolute; z-index: 1; right: clamp(24px, 8vw, 140px); bottom: 4vh; margin: 0;
+  font: 400 clamp(.62rem, .95vw, .82rem)/1.18 "Space Mono", ui-monospace, monospace;
+  color: var(--muted); opacity: .55; pointer-events: none; will-change: opacity, transform;
+}
+@media (max-width: 900px) { .hero__art { display: none; } }
+
 /* The opening line: one modest sentence, left-aligned, the same style as the other headings */
 .intro__content {
   position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 64px);

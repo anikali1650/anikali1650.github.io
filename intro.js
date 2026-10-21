@@ -13,3 +13,17 @@
   }
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(hide);
 })();
+
+// The UT Tower drawing on the right of the opening fades and drifts up as you scroll away
+(function () {
+  var art = document.querySelector('.hero__art');
+  if (!art) return;
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function update() {
+    var t = Math.min(1, Math.max(0, scrollY / (innerHeight * 0.6)));
+    art.style.opacity = (0.55 * (1 - t)).toFixed(3);
+    if (!still) art.style.transform = 'translateY(' + (-scrollY * 0.25).toFixed(1) + 'px)';
+  }
+  update();
+  addEventListener('scroll', update, { passive: true });
+})();
