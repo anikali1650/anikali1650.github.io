@@ -69,7 +69,7 @@ a { color: inherit; }
 /* The opening line: one modest sentence, left-aligned, the same style as the other headings */
 .intro__content {
   position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 64px);
-  align-self: flex-end; padding-bottom: 6vh;   /* sit low in the hero so the page follows closely */
+  align-self: flex-end; padding-bottom: 4vh;   /* sit low in the hero so the page follows closely */
 }
 .name {
   font: 600 clamp(2rem, 4.8vw, 3.8rem)/1.08 Inter, system-ui, sans-serif; letter-spacing: -.035em;
@@ -117,7 +117,7 @@ h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 .7em; display: flex; align
 .statement__title .at { font-size: 1.3em; line-height: .8; white-space: nowrap; }
 .statement__grid {
   display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(28px, 6vw, 96px);
-  align-items: center; margin-top: clamp(40px, 6vw, 72px);
+  align-items: start; margin-top: 0;
 }
 .statement__body { margin: 0; font-size: clamp(1.1rem, 1.9vw, 1.4rem); line-height: 1.45; text-align: justify; hyphens: auto; }
 .statement__note { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.02; }
@@ -270,4 +270,4 @@ html.has-cursor, html.has-cursor * { cursor: none; }
 @keyframes splashPulse { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
 @keyframes splashOut { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .splash span { animation: none; } }
-#about { padding-top: clamp(24px, 4vw, 48px); }
+#about { padding-top: clamp(16px, 2.5vw, 28px); }
