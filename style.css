@@ -139,11 +139,10 @@ h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 .7em; display: flex; align
 .statement__links a { color: var(--fg); text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--fg) 35%, transparent); }
 .tags__label { margin: 0 0 .6em; color: var(--muted); font-size: .9rem; }
 .tags + .tags__label { margin-top: 1.4em; }
-#skills { scroll-margin-top: 90px; }
 .statement__programs { margin: 1.1em 0 0; font-size: 1rem; line-height: 1.6; color: var(--muted); max-width: 60ch; }
 .statement__programs a { color: var(--fg); text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--fg) 35%, transparent); }
 .statement__programs a:hover { color: var(--accent); }
-.statement__tags { margin-top: clamp(40px, 6vw, 64px); }
+.statement__tags { margin-top: 0; }
 .tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .tags li { padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: .95rem; border: 2px solid var(--fg); }
 .tags li:nth-child(odd) { background: var(--fg); color: var(--bg); }
