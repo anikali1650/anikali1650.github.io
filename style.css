@@ -215,7 +215,7 @@ html.has-cursor, html.has-cursor * { cursor: none; }
 /* Closing: the email as the last big line of the page, with a small ASCII oak beside it */
 .closing {
   scroll-margin-top: 40px; max-width: 1400px; margin: 0 auto;
-  padding: clamp(80px, 12vw, 160px) clamp(16px, 4vw, 48px) 40px;
+  padding: clamp(32px, 4vw, 56px) clamp(16px, 4vw, 48px) 40px;
   border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
 }
 .closing__row { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
