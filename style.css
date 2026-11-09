@@ -121,6 +121,9 @@ h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 .7em; display: flex; align
 }
 .statement__body { margin: 0; font-size: clamp(1.1rem, 1.9vw, 1.4rem); line-height: 1.45; text-align: justify; hyphens: auto; }
 .statement__note { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.02; }
+.xp__bullets { margin: .45em 0 0; padding-left: 1.1em; color: var(--muted); font-size: .98rem; line-height: 1.55; max-width: 70ch; }
+.xp__bullets li { margin: .15em 0; }
+.xp__bullets li::marker { color: var(--muted); }
 .xp__more { display: inline-block; margin-top: .45em; font-size: .9rem; color: var(--fg); text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--fg) 35%, transparent); }
 .xp__more:hover { text-decoration-color: currentColor; }
 
